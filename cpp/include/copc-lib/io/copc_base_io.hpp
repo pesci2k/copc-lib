@@ -16,8 +16,6 @@ class Hierarchy;
 class PageInternal;
 } // namespace Internal
 
-struct CopcConfig;
-
 // Base class for all IO reader/writers
 class BaseIO
 {
