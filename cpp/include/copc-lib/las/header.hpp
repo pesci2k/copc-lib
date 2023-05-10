@@ -97,7 +97,7 @@ class LasHeader
     std::string GeneratingSoftware() const { return generating_software_; }
 
     // Returns the scaled size of the maximum dimension of the point cloud
-    double Span() const { return std::max({max.x - min.x, max.y - min.y, max.z - min.z}); }
+    double Span() const { return (std::max)({max.x - min.x, max.y - min.y, max.z - min.z}); }
 
     // Returns a box that fits the dimensions of the point cloud based on min and max
     Box Bounds() const;
