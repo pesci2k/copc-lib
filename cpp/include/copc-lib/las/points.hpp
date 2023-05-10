@@ -10,7 +10,9 @@
 #include "copc-lib/las/point.hpp"
 #include "copc-lib/las/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 // The Points class provides a wrapper around a vector of copc::las::Point objects
 // It is recommended to use this class over a vector, and to use the CreatePoint function
@@ -232,5 +234,6 @@ class Points
     int8_t point_format_id_;
     uint32_t point_record_length_;
 };
-} // namespace copc::las
+} // namespace las
+} // namespace copc
 #endif // COPCLIB_LAS_POINTS_H_

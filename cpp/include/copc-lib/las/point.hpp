@@ -8,7 +8,9 @@
 #include "copc-lib/las/header.hpp"
 #include "copc-lib/las/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 class Point
 {
@@ -252,5 +254,6 @@ class Point
     int8_t point_format_id_;
 };
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc
 #endif // COPCLIB_LAS_POINT_H_

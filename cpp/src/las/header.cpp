@@ -11,7 +11,9 @@
 #include "copc-lib/las/point.hpp"
 #include "copc-lib/las/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 
 LasHeader::LasHeader(const LasHeader &header, int8_t point_format_id, uint16_t point_record_length,
@@ -188,4 +190,5 @@ std::string LasHeader::ToString() const
     return ss.str();
 }
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc

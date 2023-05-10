@@ -5,7 +5,9 @@
 
 #include "copc-lib/copc/copc_config.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 LazConfig::LazConfig(const int8_t &point_format_id, const Vector3 &scale, const Vector3 &offset, std::string wkt,
                      const las::EbVlr &extra_bytes_vlr, bool copc_flag)
@@ -43,4 +45,5 @@ LazConfigWriter::LazConfigWriter(const int8_t &point_format_id, const Vector3 &s
         throw std::runtime_error("LasConfig: Supported point formats are 6 to 8.");
 }
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc

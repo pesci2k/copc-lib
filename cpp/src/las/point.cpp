@@ -1,7 +1,9 @@
 #include "copc-lib/las/point.hpp"
 #include "copc-lib/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 Point::Point(const int8_t &point_format_id, const uint16_t &eb_byte_size) : point_format_id_(point_format_id)
 {
@@ -178,4 +180,5 @@ std::string Point::ToString() const
     return ss.str();
 }
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc

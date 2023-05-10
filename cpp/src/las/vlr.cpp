@@ -1,7 +1,9 @@
 #include "copc-lib/las/vlr.hpp"
 #include "copc-lib/las/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 
 uint8_t EXTRA_BYTE_DATA_TYPE[31]{0, 1,  1,  2, 2,  4, 4, 8, 8, 4,  8,  2,  2,  4,  4, 8,
@@ -111,4 +113,5 @@ lazperf::evlr_header CopcExtentsVlr::eheader() const
 {
     return lazperf::evlr_header{0, "copc", 10000, size(), "COPC extents"};
 }
-} // namespace copc::las
+} // namespace las
+} // namespace copc

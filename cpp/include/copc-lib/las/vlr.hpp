@@ -7,7 +7,9 @@
 
 #include <lazperf/vlr.hpp>
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 
 using WktVlr = lazperf::wkt_vlr;
@@ -62,7 +64,8 @@ class CopcExtentsVlr : public lazperf::vlr
     lazperf::evlr_header eheader() const override;
 };
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc
 
 namespace lazperf
 {

@@ -1,6 +1,8 @@
 #include "copc-lib/las/utils.hpp"
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 
 uint8_t PointBaseByteSize(const int8_t &point_format_id)
@@ -71,4 +73,5 @@ uint16_t PointByteSize(const int8_t &point_format_id, const uint16_t &eb_byte_si
     return PointBaseByteSize(point_format_id) + eb_byte_size;
 }
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc

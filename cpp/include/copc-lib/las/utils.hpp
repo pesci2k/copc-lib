@@ -4,7 +4,9 @@
 #include <cmath>
 #include <iostream>
 
-namespace copc::las
+namespace copc
+{
+namespace las
 {
 uint8_t PointBaseByteSize(const int8_t &point_format_id);
 uint8_t PointBaseNumberDimensions(const int8_t &point_format_id);
@@ -38,5 +40,6 @@ template <typename T> void pack(const T &value, std::ostream &out_stream)
     out_stream.write(reinterpret_cast<const char *>(&value), sizeof(T));
 }
 
-} // namespace copc::las
+} // namespace las
+} // namespace copc
 #endif // COPCLIB_LAS_UTILS_H_
