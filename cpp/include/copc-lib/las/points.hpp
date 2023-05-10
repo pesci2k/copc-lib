@@ -141,7 +141,7 @@ class Points
         std::vector<uint8_t> out;
         out.resize(Size());
         std::transform(points_.begin(), points_.end(), out.begin(),
-                       [](const std::shared_ptr<Point> &p) { return p->PointSourceId(); });
+                       [](const std::shared_ptr<Point> &p) { return static_cast<uint8_t>(p->PointSourceId()); });
         return out;
     }
     void PointSourceId(const std::vector<uint8_t> &in)

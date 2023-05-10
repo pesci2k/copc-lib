@@ -25,7 +25,8 @@ void Reader::InitCopcReader()
     auto copc_extents = ReadCopcExtentsVlr(vlrs_, las_config_.ExtraBytesVlr());
 
     config_ = copc::CopcConfig(las_config_, copc_info, copc_extents);
-    hierarchy_ = std::make_shared<Internal::Hierarchy>(copc_info.root_hier_offset, copc_info.root_hier_size);
+    hierarchy_ = std::make_shared<Internal::Hierarchy>(copc_info.root_hier_offset,
+                                                       static_cast<int32_t>(copc_info.root_hier_size));
 }
 
 CopcInfo Reader::ReadCopcInfoVlr(std::map<uint64_t, las::VlrHeader> &vlrs)

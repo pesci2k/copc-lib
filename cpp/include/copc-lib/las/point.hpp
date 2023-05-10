@@ -79,7 +79,7 @@ class Point
 #pragma region Flags
 
     bool Synthetic() const { return flags_ & 0x1; }
-    void Synthetic(const bool &synthetic) { flags_ = (flags_ & 0xFE) | synthetic; }
+    void Synthetic(const bool &synthetic) { flags_ = (flags_ & 0xFE) | static_cast<uint8_t>(synthetic); }
 
     bool KeyPoint() const { return (flags_ >> 1) & 0x1; }
     void KeyPoint(const bool &key_point) { flags_ = (flags_ & 0xFD) | (key_point << 1); }
