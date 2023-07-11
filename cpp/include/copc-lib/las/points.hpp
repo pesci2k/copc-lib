@@ -57,8 +57,8 @@ class Points
     void Pack(std::ostream &out_stream, const Vector3 &scale, const Vector3 &offset) const;
     void Pack(std::ostream &out_stream, const LasHeader &header) const;
     static Points Unpack(const std::vector<char> &point_data, const int8_t &point_format_id,
-                         const uint16_t &eb_byte_size, const Vector3 &scale, const Vector3 &offset);
-    static Points Unpack(const std::vector<char> &point_data, const LasHeader &header);
+                         const uint16_t &eb_byte_size, const Vector3 &scale, const Vector3 &offset, bool scaled = true);
+    static Points Unpack(const std::vector<char> &point_data, const LasHeader &header, bool scaled = true);
 
     std::string ToString() const;
     friend std::ostream &operator<<(std::ostream &os, Points const &value)

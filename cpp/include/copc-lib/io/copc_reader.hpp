@@ -31,8 +31,8 @@ class Reader : public BaseIO, public BaseReader
     // VoxelKey can be invalid, function will return empty arr
     std::vector<char> GetPointData(VoxelKey const &key);
     // Reads the node's data into Point objects
-    las::Points GetPoints(Node const &node);
-    las::Points GetPoints(VoxelKey const &key);
+    las::Points GetPoints(Node const &node, bool scaled = true);
+    las::Points GetPoints(VoxelKey const &key, bool scaled = true);
     // Reads node data without decompressing
     std::vector<char> GetPointDataCompressed(Node const &node);
     std::vector<char> GetPointDataCompressed(VoxelKey const &key);

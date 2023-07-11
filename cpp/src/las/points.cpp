@@ -69,13 +69,13 @@ void Points::AddPoints(std::vector<std::shared_ptr<Point>> points)
     points_.insert(points_.end(), points.begin(), points.end());
 }
 
-Points Points::Unpack(const std::vector<char> &point_data, const LasHeader &header)
+Points Points::Unpack(const std::vector<char> &point_data, const LasHeader &header, bool scaled)
 {
-    return Unpack(point_data, header.PointFormatId(), header.EbByteSize(), header.Scale(), header.Offset());
+    return Unpack(point_data, header.PointFormatId(), header.EbByteSize(), header.Scale(), header.Offset(), scaled);
 }
 
 Points Points::Unpack(const std::vector<char> &point_data, const int8_t &point_format_id, const uint16_t &eb_byte_size,
-                      const Vector3 &scale, const Vector3 &offset)
+                      const Vector3 &scale, const Vector3 &offset, bool scaled)
 {
     auto point_record_length = PointByteSize(point_format_id, eb_byte_size);
     if (point_data.size() % point_record_length != 0)
@@ -93,7 +93,7 @@ Points Points::Unpack(const std::vector<char> &point_data, const int8_t &point_f
     // Unpack points
     for (int i = 0; i < point_count; i++)
     {
-        points.AddPoint(las::Point::Unpack(ss, point_format_id, scale, offset, eb_byte_size));
+        points.AddPoint(las::Point::Unpack(ss, point_format_id, scale, offset, eb_byte_size, scaled));
     }
 
     return points;

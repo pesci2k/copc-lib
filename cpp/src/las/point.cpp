@@ -80,13 +80,19 @@ bool Point::operator==(const Point &other) const
 bool Point::Within(const Box &box) const { return box.Contains(Vector3(X(), Y(), Z())); }
 
 std::shared_ptr<Point> Point::Unpack(std::istream &in_stream, const int8_t &point_format_id, const Vector3 &scale,
-                                     const Vector3 &offset, const uint16_t &eb_byte_size)
+                                     const Vector3 &offset, const uint16_t &eb_byte_size, bool scaled)
 {
     std::shared_ptr<Point> p = std::make_shared<Point>(point_format_id, eb_byte_size);
 
-    p->x_scaled_ = ApplyScale(unpack<int32_t>(in_stream), scale.x, offset.x);
-    p->y_scaled_ = ApplyScale(unpack<int32_t>(in_stream), scale.y, offset.y);
-    p->z_scaled_ = ApplyScale(unpack<int32_t>(in_stream), scale.z, offset.z);
+    p->x_scaled_ = unpack<int32_t>(in_stream);
+    p->y_scaled_ = unpack<int32_t>(in_stream);
+    p->z_scaled_ = unpack<int32_t>(in_stream);
+    if (scaled)
+    {
+        p->x_scaled_ = ApplyScale( p->x_scaled_, scale.x, offset.x);
+        p->y_scaled_ = ApplyScale( p->y_scaled_, scale.y, offset.y);
+        p->z_scaled_ = ApplyScale( p->z_scaled_, scale.z, offset.z);
+    }
     p->intensity_ = unpack<uint16_t>(in_stream);
     p->returns_ = unpack<uint8_t>(in_stream);
     p->flags_ = unpack<uint8_t>(in_stream);

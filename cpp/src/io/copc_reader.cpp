@@ -92,20 +92,20 @@ std::vector<Entry> Reader::ReadPage(std::shared_ptr<Internal::PageInternal> page
     return out;
 }
 
-las::Points Reader::GetPoints(Node const &node)
+las::Points Reader::GetPoints(Node const &node, bool scaled)
 {
     std::vector<char> point_data = GetPointData(node);
-    return las::Points::Unpack(point_data, config_.LasHeader());
+    return las::Points::Unpack(point_data, config_.LasHeader(), scaled);
 }
 
-las::Points Reader::GetPoints(VoxelKey const &key)
+las::Points Reader::GetPoints(VoxelKey const &key, bool scaled)
 {
     std::vector<char> point_data = GetPointData(key);
 
     if (point_data.empty())
         return las::Points(config_.LasHeader());
 
-    return las::Points::Unpack(point_data, config_.LasHeader());
+    return las::Points::Unpack(point_data, config_.LasHeader(), scaled);
 }
 
 std::vector<char> Reader::GetPointData(Node const &node)
