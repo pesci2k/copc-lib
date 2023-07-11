@@ -108,7 +108,7 @@ class LasHeader
 
     // Apply Las scale factors to Vector3 or double
     Vector3 ApplyScale(const Vector3 &unscaled_value) const { return unscaled_value * scale_ + offset_; }
-    Vector3 ApplyInverseScale(const Vector3 &scaled_value) const { return scaled_value / scale_ - offset_; }
+    Vector3 ApplyInverseScale(const Vector3 &scaled_value) const { return (scaled_value - offset_) / scale_; }
     double ApplyScaleX(double unscaled_value) const { return unscaled_value * scale_.x + offset_.x; }
     double ApplyScaleY(double unscaled_value) const { return unscaled_value * scale_.y + offset_.y; }
     double ApplyScaleZ(double unscaled_value) const { return unscaled_value * scale_.z + offset_.z; }
